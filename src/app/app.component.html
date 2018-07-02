@@ -1,0 +1,29 @@
+<div style="padding:50px 100px">
+  <div class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <mat-form-field>
+        <span>Filter/Search</span>
+        <input style="border:2px solid #000" matInput (keyup)="applyFilter($event.target.value)">
+      </mat-form-field>
+    </div>
+    <mat-table [dataSource]="tableDataSource">
+      <ng-container matColumnDef="created_at">
+        <mat-header-cell *matHeaderCellDef> created_at </mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index" (click)="open(row)"> {{row.created_at}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> title </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index" (click)="open(row)"> {{row.title}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="url">
+        <mat-header-cell *matHeaderCellDef> url </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index" (click)="open(row)"> {{row.url}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef> author </mat-header-cell>
+        <mat-cell *matCellDef="let row" (click)="open(row)"> {{row.author}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
